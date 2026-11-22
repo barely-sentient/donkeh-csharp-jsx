@@ -1,0 +1,23 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <Import Project="../UI Framework/CSS-Engine/Donkeh/Build/Donkeh.props" />
+
+  <PropertyGroup>
+    <DonkehDesktop>true</DonkehDesktop>
+    <TargetFrameworks>$(DonkehTargetFrameworks)</TargetFrameworks>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>DonkehCSXTest</RootNamespace>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <DefaultItemExcludes>$(DefaultItemExcludes);builds/**;**/bin/**;**/obj/**</DefaultItemExcludes>
+    <DonkehVersion Condition="'$(DonkehVersion)' == ''">1.0.45</DonkehVersion>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="src/Components/**/*.css" />
+  </ItemGroup>
+
+  <!-- Add Android or browser targets with:
+       donkeh enable-target android
+       donkeh enable-target web -->
+
+</Project>

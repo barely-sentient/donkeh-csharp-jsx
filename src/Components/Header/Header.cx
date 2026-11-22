@@ -1,0 +1,23 @@
+using Donkeh.UILab;
+
+[assembly: Stylesheet("src/Components/Header/Header.css")]
+
+namespace Components
+{
+    public class HeaderProps : Props
+    {
+
+    }
+    public class Header : Component<HeaderProps>
+    {
+        public override Node Render()
+        {
+            return (
+                <header className="header">
+                    <h1>My Application</h1>
+                </header>
+            );
+        }
+
+    }
+}

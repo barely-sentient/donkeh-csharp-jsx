@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <Import Project="../../../UI Framework/CSS-Engine/Donkeh/Build/Donkeh.props" />
+  <PropertyGroup>
+    <DonkehDesktop>true</DonkehDesktop>
+    <TargetFrameworks>$(DonkehTargetFrameworks)</TargetFrameworks>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <EnableDefaultCompileItems>false</EnableDefaultCompileItems>
+    <OutputType>Exe</OutputType>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="**/*.generated.cs" />
+    <Compile Include="../../**/*.cs" Exclude="../../bin/**;../../obj/**;../../**/bin/**;../../**/obj/**;../../**/Debug/**;../../**/Release/**" />
+  </ItemGroup>
+</Project>
