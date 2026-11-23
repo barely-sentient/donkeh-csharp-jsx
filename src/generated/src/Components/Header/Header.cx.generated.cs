@@ -13,7 +13,7 @@ namespace Components
         public override Node Render()
         {
             return (
-                _.H("header", new() { className = "header" }, _.H("h1", new() { }, "My Application"))
+                _.H("header", new() { className = "header" }, _.H("h1", new() { }, "My Application"))   
             );
         }
 

@@ -9,5 +9,5 @@ public sealed class App : Component
 {
     /// <inheritdoc/>
     public override Node Render() =>
-        _.C<Header>();
+        _.C<Header, HeaderProps>(new() { });
 }

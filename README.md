@@ -1,7 +1,7 @@
 # DonkehCSXTest
 
-A small DonkehUI application written with CSX. The component below is declared in
-`Program.cx` and rendered through the generated build in `src/generated`.
+A small DonkehUI application built with CSX. Components are written in `.cx` files and transformed into C# using the configuration specified in `csx.json`.
+
 
 ![Code](screenshots/code.png)
 
@@ -9,41 +9,77 @@ A small DonkehUI application written with CSX. The component below is declared i
 
 ## Getting started
 
-DonkehUI is about to get even easier: with the new `csx` tooling you can go from
-`.cx` source to a running window in one step.
+### Requirements
 
-```bash
-# Transform .cx files and run the app
+- .NET 10 SDK
+- **CSX.CliTool** `1.0.3` – Transforms `.cx` files and provides CSX tooling.
+- **Donkeh.CliTool** `1.0.47` – Provides Donkeh project tooling.
+
+Install both global tools:
+
+```
+dotnet tool install --global CSX.CliTool --version 1.0.3
+dotnet tool install --global Donkeh.CliTool --version 1.0.47
+```
+
+If already installed, use `dotnet tool update` instead.
+
+Verify installation:
+
+```
+csx --help
+donkeh --help
+```
+
+### Editor support (optional)
+
+Install CSX language support for your editor:
+
+```
+csx enable vscode
+# or
+csx enable rider
+```
+
+Restart your editor after installation.
+
+### Run the application
+
+```
 csx run
-
-# Or just build
-csx build
 ```
 
-If you prefer the classic flow, the generated C# lives in `src/generated` and the
-project builds with the normal .NET tooling:
+This transforms the `.cx` source files into C# according to `csx.json`, then builds and launches the application.
 
-```bash
-dotnet run
+Other commands:
+
+```
+csx build    # Transform and compile without launching
+dotnet run   # Run using the existing generated C#
 ```
 
-## Embedding CSS into the assembly
+After editing `.cx` files, run `csx build` or `csx run` to regenerate the C# source.
 
-Donkeh stylesheets are embedded as resources and registered with an assembly
-attribute. Add the CSS files as `EmbeddedResource` items in your `.csproj`:
+### Additional Donkeh commands
 
-```xml
-<ItemGroup>
-  <EmbeddedResource Include="src/Components/**/*.css" />
-</ItemGroup>
+```
+donkeh new project MyApp --csx
+donkeh new component Header --project .
+donkeh enable-target android
+donkeh enable-feature hot-reload
+donkeh watch
 ```
 
-Then declare the stylesheet on the assembly (usually at the top of the component
-file):
+### Troubleshooting
 
-```csharp
-[assembly: Stylesheet("src/Components/Header/Header.css")]
+If `csx` or `donkeh` isn't recognised, ensure `%USERPROFILE%\.dotnet\tools` is on your `PATH`, then restart your terminal.
+
+List installed global tools with:
+
+```
+dotnet tool list --global
 ```
 
-This keeps the CSS inside the built assembly so the app can ship as a single
-binary.
+## Documentation
+
+For DonkehUI features, components, styling and project configuration, see the [DonkehUI documentation](https://barely-sentient.github.io/donkeh-ui).
